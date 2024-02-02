@@ -9,7 +9,8 @@
     "test:jest": "jest",
     "test:jest:watch": "jest --watchAll",
     "test:mocha": "nyc mocha",
-    "test:vitest": "vitest --coverage"
+    "coverage": "vitest --coverage",
+    "test": "vitest --watch"
   },
   "license": "MIT",
   "private": true,
