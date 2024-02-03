@@ -121,4 +121,15 @@ describe("testing gilded rose", () => {
 
     expect(result[0].quality).toBe(0);
   });
+
+  it("the `conjured` itens decrease the quality twice as fast as the normal items", () => {
+    const item1 = new Item("Conjured", 15, 15);
+    const item2 = new Item("Conjured", -1, 15);
+    const gildedRose = new GildedRose([item1, item2]);
+
+    const result = gildedRose.updateQuality();
+
+    expect(result[0].quality).toBe(13);
+    expect(result[1].quality).toBe(11);
+  })
 });

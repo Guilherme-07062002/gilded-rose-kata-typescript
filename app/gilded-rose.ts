@@ -37,6 +37,14 @@ export class GildedRose {
     }
   }
 
+  protected updateConjured(item: Item) {
+    if (item.sellIn > 0) {
+      item.quality -= 2;
+    } else {
+      item.quality -= 4;
+    }
+  }
+
   protected updateItem(item: Item) {
     if (item.sellIn > 0) {
       item.quality -= 1;
@@ -64,6 +72,9 @@ export class GildedRose {
           break;
         case "Backstage passes to a TAFKAL80ETC concert":
           this.updateBackstagePasses(item);
+          break;
+        case "Conjured":
+          this.updateConjured(item);
           break;
         default:
           this.updateItem(item);
