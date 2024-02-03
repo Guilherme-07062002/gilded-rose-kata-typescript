@@ -58,7 +58,7 @@ export class GildedRose {
   protected checkQuality(item: Item) {
     if (item.quality < 0) {
       item.quality = 0;
-    } else if (item.quality > 50) {
+    } else if (item.quality > 50 && item.name !== "Sulfuras, Hand of Ragnaros") {
       item.quality = 50;
     }
   }
@@ -82,9 +82,7 @@ export class GildedRose {
         default:
           this.updateItem(item);
       }
-      if (item.name !== "Sulfuras, Hand of Ragnaros") {
-        this.checkQuality(item);
-      }
+      this.checkQuality(item);
     })
 
     return this.items;
