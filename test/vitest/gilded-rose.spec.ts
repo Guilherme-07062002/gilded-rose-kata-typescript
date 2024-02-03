@@ -67,12 +67,12 @@ describe("testing gilded rose", () => {
   });
 
   it("backstage passes and aged brie cheese increases in +2 quality when sell date is lower or equal than 10", () => {
-    const item = new Item("Backstage passes to a TAFKAL80ETC concert", 5, 15);
+    const item = new Item("Backstage passes to a TAFKAL80ETC concert", 9, 15);
     const gildedRose = new GildedRose([item]);
 
     const result = gildedRose.updateQuality();
 
-    expect(result[0].quality).toBe(18);
+    expect(result[0].quality).toBe(17);
   });
 
   it("quality of backstage passes is 0 after the concert", () => {
@@ -90,6 +90,6 @@ describe("testing gilded rose", () => {
 
     const result = gildedRose.updateQuality();
 
-    expect(result[0].quality).toBe(42);
+    expect(result[0].quality).toBe(41);
   });
 });
