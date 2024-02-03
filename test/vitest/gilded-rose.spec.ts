@@ -78,12 +78,12 @@ describe("testing gilded rose", () => {
   });
 
   it("the sulfuras never decreases in quality", () => {
-    const item = new Item("Sulfuras, Hand of Ragnaros", null, 15);
+    const item = new Item("Sulfuras, Hand of Ragnaros", null, 40);
     const gildedRose = new GildedRose([item]);
 
     const result = gildedRose.updateQuality();
 
-    expect(result[0].quality).toBeGreaterThanOrEqual(15);
+    expect(result[0].quality).toBeGreaterThanOrEqual(40);
   });
 
   it("`backstage passes` increases +1 in quality as sell date approaches", () => {
@@ -131,5 +131,14 @@ describe("testing gilded rose", () => {
 
     expect(result[0].quality).toBe(13);
     expect(result[1].quality).toBe(11);
+  })
+
+  it("`sulfuras`, being a legendary item, will have an immutable quality of 80", () => {
+    const item = new Item("Sulfuras, Hand of Ragnaros", 0, 80);
+    const gildedRose = new GildedRose([item]);
+
+    const result = gildedRose.updateQuality();
+
+    expect(result[0].quality).toBeGreaterThanOrEqual(80);
   })
 });

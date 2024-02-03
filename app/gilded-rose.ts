@@ -17,10 +17,12 @@ export class GildedRose {
     this.items = items;
   }
 
+  protected updateSulfura(item: Item) {
+    item.quality = 80;
+  }
+
   protected updateAgedBrie(item: Item) {
-    if (item.quality < 50) {
-      item.quality += 1;
-    }
+    item.quality += 1;
   }
 
   protected updateBackstagePasses(item: Item) {
@@ -66,7 +68,8 @@ export class GildedRose {
       item.sellIn -= 1;
       switch (item.name) {
         case "Sulfuras, Hand of Ragnaros":
-          return;
+          this.updateSulfura(item);
+          break;
         case "Aged Brie":
           this.updateAgedBrie(item);
           break;
@@ -79,7 +82,9 @@ export class GildedRose {
         default:
           this.updateItem(item);
       }
-      this.checkQuality(item);
+      if (item.name !== "Sulfuras, Hand of Ragnaros") {
+        this.checkQuality(item);
+      }
     })
 
     return this.items;
